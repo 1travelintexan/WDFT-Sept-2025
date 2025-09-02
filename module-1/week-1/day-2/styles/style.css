@@ -1,0 +1,63 @@
+/* mobile css  */
+body {
+  background-color: rgb(12, 105, 74);
+  margin: 0;
+  padding: 0;
+}
+.daniel {
+  width: 100%;
+  margin: 5px;
+}
+h1 {
+  color: blueviolet;
+  font-size: 2rem;
+}
+.card {
+  background-color: rgb(146, 143, 139);
+  color: black;
+  padding: 30px;
+  margin: 10px;
+  border-radius: 5px;
+  box-shadow: 15px 15px 20px black;
+}
+/* flexbox example */
+#images-container {
+  background-color: rgb(5, 134, 24);
+  min-height: 700px;
+  /* this applies flexbox to the container  */
+  display: flex;
+  /* this aligns the items in the box vertically  */
+  align-items: flex-start;
+  /* this aligns the items in the box horizontally  */
+  justify-content: center;
+  /* this changes from row to column  */
+  flex-direction: column;
+}
+
+/* this is a break point for the medium size screen */
+@media screen and (min-width: 450px) {
+  body {
+    background-color: blue;
+  }
+
+  .daniel {
+    width: 20%;
+  }
+
+  h1 {
+    font-size: 3rem;
+  }
+}
+
+/* this is the break point for full size  */
+@media screen and (min-width: 900px) {
+  body {
+    background-color: rgb(149, 87, 10);
+  }
+  .daniel {
+    width: 20%;
+  }
+  h1 {
+    font-size: 4rem;
+  }
+}

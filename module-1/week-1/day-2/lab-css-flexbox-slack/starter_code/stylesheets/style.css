@@ -1,0 +1,99 @@
+/*
+background purple: #540B51
+background ivory: #F3EAE2
+button blue: #4285F4
+titles black: #191817
+paragraph black: #000000
+paragraph yellow: #ECB12F
+links blue: #2E71A6
+footer links grey: #454245
+*/
+/* default should be for mobile  */
+body {
+  background-color: #540b51;
+  padding: 0;
+  margin: 0;
+}
+#list {
+  display: none;
+}
+#big-image {
+  width: 100vw;
+  margin-top: 40px;
+}
+#small-image-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+}
+#small-image-container img {
+  height: 40px;
+  margin: 5px;
+}
+#slack-logo {
+  height: 35px;
+}
+#nav-buttons button {
+  background-color: #540b51;
+  border: none;
+}
+nav {
+  /* background-color: aqua; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+h1 {
+  text-align: center;
+  font-size: 2.8rem;
+}
+.text-centered {
+  text-align: center;
+  font-size: 1.2rem;
+}
+.text-centered span {
+  color: #ecb12f;
+}
+
+#buttons-container {
+  display: flex;
+  flex-direction: column;
+}
+#buttons-container button {
+  height: 65px;
+  margin: 5px;
+  font-size: 1.3rem;
+  border: none;
+  border-radius: 5px;
+  text-transform: uppercase;
+}
+.email-btn {
+  background-color: white;
+  color: #540b51;
+}
+.google-btn {
+  background-color: #2e71a6;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.google-btn div {
+  width: 40px;
+}
+.google-btn img {
+  height: 40px;
+  background-color: rgb(162, 160, 160);
+  padding: 5px;
+}
+#main-first-section {
+  background-color: #838382;
+  text-align: center;
+}
+.main-paragraph {
+  color: rgb(100, 97, 97);
+  padding: 40px 0px 10px 0px;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}

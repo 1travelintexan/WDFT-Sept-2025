@@ -1,0 +1,53 @@
+body {
+  background-color: rgb(19, 108, 108);
+}
+#pet-container {
+  margin-top: 100px;
+}
+.pet-image {
+  height: 100px;
+}
+.pet-card {
+  height: 100px;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: 10px;
+  box-shadow: 5px 5px 10px rgb(72, 72, 72);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.pet-card:hover {
+  height: 130px;
+}
+
+.bounce {
+  position: fixed;
+  left: 0%;
+  top: 0;
+  width: 100%;
+  -webkit-animation: bounce 1s infinite;
+}
+
+@-webkit-keyframes bounce {
+  0% {
+    top: 5px;
+  }
+  25%,
+  75% {
+    top: 15px;
+  }
+  50% {
+    top: 20px;
+  }
+  100% {
+    top: 0;
+  }
+}
+.change-background-color {
+  background-color: rgb(128, 61, 72);
+}
+
+.liked {
+  box-shadow: 5px 5px 10px rgb(230, 76, 76);
+}

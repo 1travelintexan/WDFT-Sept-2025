@@ -7,22 +7,33 @@ window.onload = function () {
     startGame();
   });
   document.addEventListener("keydown", (event) => {
-    // console.log("a key was pressed", event);
+    console.log("a key was pressed", event);
     if (event.code === "ArrowLeft") {
       // console.log("going left");
-      ourNewGame.player.directionX = -2;
+      ourNewGame.player.directionX = -3;
     }
     if (event.code === "ArrowRight") {
       // console.log("going right");
-      ourNewGame.player.directionX = 2;
+      ourNewGame.player.directionX = 3;
     }
     if (event.code === "ArrowUp") {
       // console.log("going up");
-      ourNewGame.player.directionY = -2;
+      ourNewGame.player.directionY = -3;
     }
     if (event.code === "ArrowDown") {
       // console.log("going down");
-      ourNewGame.player.directionY = 2;
+      ourNewGame.player.directionY = 3;
+    }
+    if (event.code === "Space") {
+      ourNewGame.boom.play();
+      ourNewGame.projectiles.push(
+        new Projectile(
+          ourNewGame.gameScreen,
+          ourNewGame.player.top,
+          //to find center we add half the car width and subtract half the bullet width
+          ourNewGame.player.left + 50 - 10
+        )
+      );
     }
   });
   //this event listener stop the car when a key is released
@@ -43,10 +54,10 @@ window.onload = function () {
   //listener for the restart button
   restartButton.addEventListener("click", () => {
     //first way
-    // window.location.reload();
+    window.location.reload();
     //'better' way
-    ourNewGame = new Game();
-    ourNewGame.start();
+    // ourNewGame = new Game();
+    // ourNewGame.start();
   });
   function startGame() {
     console.log("start game");

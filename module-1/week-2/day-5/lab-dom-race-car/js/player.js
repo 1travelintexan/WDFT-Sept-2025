@@ -20,6 +20,7 @@ class Player {
     this.element.style.left = this.left + "px";
     this.element.style.top = this.top + "px";
     //add the element to the DOM
+
     this.gameScreen.appendChild(this.element);
   }
   move() {

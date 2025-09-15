@@ -9,12 +9,18 @@ class Game {
     this.height = 600;
     this.width = 500;
     this.obstacles = [new Obstacle(this.gameScreen)];
+    this.projectiles = [];
     this.score = 0;
-    this.lives = 1;
+    this.lives = 5;
     this.gameIsOver = false;
     this.gameIntervalId = null;
     this.gameLoopFrequency = Math.floor(1000 / 60);
     this.frame = 0;
+
+    //add some sound
+    this.boom = new Audio("../assets/boom.wav");
+    //lower the volume
+    this.boom.volume = 0.1;
   }
   start() {
     //sets the height and width of the game screen
@@ -43,9 +49,33 @@ class Game {
     //always call the move method of your player in the update
     this.player.move();
     //this moves all the obstacles
+
     for (let i = 0; i < this.obstacles.length; i++) {
       const currentObstacle = this.obstacles[i];
       currentObstacle.move();
+
+      //this is a second for loop inside the obstacle for loop to check for collisions
+      //this controld the movement of all of the projectiles
+      for (let j = 0; j < this.projectiles.length; j++) {
+        const currentProjectile = this.projectiles[j];
+        currentProjectile.move();
+        //check if the projectile ever collides with an obstacle
+        if (currentProjectile.didCollide(currentObstacle)) {
+          //remove the obstacle from the array and the DOM
+          this.obstacles.splice(i, 1);
+          i--;
+          //dont forget to remove the element from the DOM
+          currentObstacle.element.remove();
+          this.projectiles.splice(j, 1);
+          currentProjectile.element.remove();
+          j--;
+
+          //add one point to this.score and then update the DOM
+          this.score++;
+          this.scoreElement.innerText = this.score;
+        }
+      }
+
       //if the obs goes off the screen on the bottom...
       //splice from array, and remove the element
       if (currentObstacle.top > 650) {
@@ -66,10 +96,18 @@ class Game {
         this.obstacles.splice(i, 1);
         //dont forget to remove the element from the DOM
         currentObstacle.element.remove();
+        i--;
         //this changes the js variable of this.lives
         this.lives--;
         //update the DOM to have the new lives
         this.livesElement.innerText = this.lives;
+
+        //add the class of spin to the player car when hit
+        this.player.element.classList.add("spin");
+        //make a setTimeout to remove the class spin after one second
+        setTimeout(() => {
+          this.player.element.classList.remove("spin");
+        }, 1000);
         //check if the this.lives === 0
         if (this.lives === 0) {
           this.gameIsOver = true;

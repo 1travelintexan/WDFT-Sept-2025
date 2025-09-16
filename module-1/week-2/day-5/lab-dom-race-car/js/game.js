@@ -5,13 +5,15 @@ class Game {
     this.gameEndScreen = document.getElementById("game-end");
     this.livesElement = document.getElementById("lives");
     this.scoreElement = document.getElementById("score");
+    //this element is the order list from the html
+    this.topScoreListElement = document.getElementById("top-scores");
     this.player = new Player(this.gameScreen, 450, 200);
     this.height = 600;
     this.width = 500;
     this.obstacles = [new Obstacle(this.gameScreen)];
     this.projectiles = [];
     this.score = 0;
-    this.lives = 5;
+    this.lives = 1;
     this.gameIsOver = false;
     this.gameIntervalId = null;
     this.gameLoopFrequency = Math.floor(1000 / 60);
@@ -128,5 +130,41 @@ class Game {
     this.gameEndScreen.style.display = "block";
     //remove the player car from the game screen
     this.player.element.remove();
+    this.highScore();
+  }
+
+  highScore() {
+    // first grab the score (this.score)
+
+    // then get the scores from the local storage
+    const scoresInLS = localStorage.getItem("high-scores");
+    console.log("this is in the high score", scoresInLS);
+
+    // add the new score to the array from the local storage for the first time playing
+    if (!scoresInLS) {
+      localStorage.setItem("high-scores", JSON.stringify([this.score]));
+    } else {
+      console.log("this is in the else", scoresInLS);
+      //convert string array into an actual array
+      const parsedHighScores = JSON.parse(scoresInLS);
+      //push your new score to that array
+      parsedHighScores.push(this.score);
+      //before reseting the local storage value, sort the array in desc order
+      //sort the array desc and take the top 3
+      parsedHighScores.sort((a, b) => b - a);
+      const topThreeScores = parsedHighScores.slice(0, 3);
+      //reset the local storage to have the old array and the new score
+      localStorage.setItem("high-scores", JSON.stringify(topThreeScores));
+
+      //after adding to local storage, update the DOM to show visually
+      topThreeScores.forEach((oneScore) => {
+        //create an li element
+        const ourNewLi = document.createElement("li");
+        //set the innerText of that element to be the score
+        ourNewLi.innerText = oneScore;
+        // append to the dom
+        this.topScoreListElement.appendChild(ourNewLi);
+      });
+    }
   }
 }

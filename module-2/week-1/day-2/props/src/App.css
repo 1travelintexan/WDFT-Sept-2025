@@ -1,0 +1,38 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+h1 {
+  margin: 0;
+  padding: 0;
+}
+nav {
+  height: 10vh;
+  background-color: rgb(22, 61, 61);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+nav img {
+  height: 8vh;
+  border-radius: 50%;
+}
+main {
+  background-color: rgb(31, 53, 7);
+  min-height: 70vh;
+  padding: 10px;
+}
+footer {
+  background-color: rgb(89, 17, 17);
+  height: 20vh;
+  text-align: center;
+}
+#pet-card {
+  border: 1px solid white;
+  border-radius: 10px;
+  padding: 5px;
+}
+#pet-card img {
+  height: 100px;
+}

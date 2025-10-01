@@ -17,20 +17,20 @@ export const AddProductPage = () => {
         thumbnail,
       };
       //axios post example
-      //   const { data } = await axios.post(
-      //     "https://dummyjson.com/products/add",
-      //     productToAdd
-      //   );
+      const { data } = await axios.post(
+        "https://dummyjson.com/products/add",
+        productToAdd
+      );
 
       //fetch post example
-      const response = await fetch("https://dummyjson.com/products/add", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(productToAdd),
-      });
-      const data = await response.json();
+      // const response = await fetch("https://dummyjson.com/products/add", {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify(productToAdd),
+      // });
+      // const data = await response.json();
       console.log(data);
       nav("/products");
     } catch (error) {

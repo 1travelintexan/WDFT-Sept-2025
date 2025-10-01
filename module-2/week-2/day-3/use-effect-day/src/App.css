@@ -1,0 +1,49 @@
+body {
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+nav {
+  background-color: rgb(18, 18, 128);
+  height: 10vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+a {
+  text-decoration: none;
+}
+.active {
+  text-shadow: 5px 5px 20px white;
+  color: red;
+  font-size: 1.2rem;
+}
+#character-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.character-card {
+  border: 1px solid white;
+  margin: 5px;
+  width: 30%;
+}
+.character-card img {
+  height: 100px;
+}
+
+.recipe-card img {
+  height: 100px;
+}
+form {
+  background-color: rgb(25, 82, 82);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+label {
+  margin: 5px;
+}

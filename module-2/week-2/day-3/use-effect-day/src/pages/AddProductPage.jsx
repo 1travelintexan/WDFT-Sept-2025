@@ -5,19 +5,29 @@ import { useNavigate } from "react-router-dom";
 export const AddProductPage = () => {
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState(0);
-  const [thumbnail, setThumbnail] = useState("");
+  const [image, setImage] = useState(null);
 
   const nav = useNavigate();
   async function handleAddProduct(e) {
     e.preventDefault();
     try {
+      //first create a form data
+      const ourFormData = new FormData();
+      ourFormData.append("file", image);
+      ourFormData.append("upload_preset", "ironhack");
+      ourFormData.append("cloud_name", "dnkyulofa");
+      const { data } = await axios.post(
+        "https://api.cloudinary.com/v1_1/dnkyulofa/image/upload",
+        ourFormData
+      );
+      console.log(data.secure_url);
       const productToAdd = {
         title,
         price,
-        thumbnail,
+        thumbnail: data.secure_url,
       };
-      //axios post example
-      const { data } = await axios.post(
+      // //axios post example
+      const response = await axios.post(
         "https://dummyjson.com/products/add",
         productToAdd
       );
@@ -31,7 +41,7 @@ export const AddProductPage = () => {
       //   body: JSON.stringify(productToAdd),
       // });
       // const data = await response.json();
-      console.log(data);
+      console.log(response.data);
       nav("/products");
     } catch (error) {
       console.log(error);
@@ -63,7 +73,7 @@ export const AddProductPage = () => {
             }}
           />
         </label>
-        <label>
+        {/* <label>
           Product Image:
           <input
             type="text"
@@ -72,6 +82,14 @@ export const AddProductPage = () => {
             onChange={(event) => {
               setThumbnail(event.target.value);
             }}
+          />
+        </label> */}
+        <label>
+          Product Image:
+          <input
+            type="file"
+            name="image"
+            onChange={(e) => setImage(e.target.files[0])}
           />
         </label>
 

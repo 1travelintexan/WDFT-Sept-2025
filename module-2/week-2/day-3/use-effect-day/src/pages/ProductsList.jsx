@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { OurSpinner } from "../components/OurSpinner";
 
 export const ProductsList = () => {
   const [products, setProducts] = useState([]);
@@ -15,8 +16,14 @@ export const ProductsList = () => {
         console.log(error);
       }
     }
+
     getAllProducts();
   }, []);
+
+  if (products.length === 0) {
+    return <OurSpinner />;
+  }
+
   return (
     <div>
       <h2>Products</h2>

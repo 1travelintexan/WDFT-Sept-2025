@@ -1,0 +1,13 @@
+/* this is how to import fonts in css */
+@import url("https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap");
+body {
+  font-family: "UnifrakturMaguntia", cursive;
+}
+
+.logo {
+  height: 150px;
+}
+
+/* #logo-id {
+  height: 500px;
+} */

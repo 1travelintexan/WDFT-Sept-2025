@@ -11,9 +11,13 @@ import { ProductsList } from "./pages/ProductsList";
 import { ProductDetailPage } from "./pages/ProductDetailPage";
 import { AddProductPage } from "./pages/AddProductPage";
 import { UpdateProductPage } from "./pages/UpdateProductPage";
+import { useContext } from "react";
+import { ThemeContext } from "./contexts/ThemeContext";
 function App() {
+  //grab the theme to set the background color of all pages
+  const { theme } = useContext(ThemeContext);
   return (
-    <>
+    <div className={`outer-container ${theme}`}>
       <Navbar />
       <h1>Use Effect Day</h1>
       <Routes>
@@ -38,7 +42,7 @@ function App() {
         <Route path="/recipe-list" element={<RecipeListPage />} />
         <Route path="/one-recipe/:recipeId" element={<RecipeDetailPage />} />
       </Routes>
-    </>
+    </div>
   );
 }
 

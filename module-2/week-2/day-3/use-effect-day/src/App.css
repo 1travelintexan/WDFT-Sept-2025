@@ -31,7 +31,7 @@ a {
   width: 30%;
 }
 .character-card img {
-  height: 100px;
+  height: 110px;
 }
 
 .recipe-card img {
@@ -46,4 +46,13 @@ form {
 }
 label {
   margin: 5px;
+}
+.outer-container {
+  min-height: 100vh;
+}
+.dark {
+  background-color: rgb(10, 48, 48);
+}
+.light {
+  background-color: rgb(128, 184, 227);
 }

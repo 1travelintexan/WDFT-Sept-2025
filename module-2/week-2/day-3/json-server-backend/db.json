@@ -1,14 +1,16 @@
 {
-  "projects": [
+  "pizzas": [
     {
       "id": 1,
-      "title": "Module 2 Project",
-      "description": "Module 2 project - Integrate a React app with backend."
+      "title": "Pinnapple Pizza :)",
+      "description": "Best pizza ever!",
+      "userId": 1
     },
     {
       "id": 2,
-      "title": "Module 3 Project",
-      "description": "Create a full-stack application using MERN stack."
+      "title": "BBQ",
+      "description": "second best pizza.",
+      "userId": 1
     }
   ],
   "tasks": [

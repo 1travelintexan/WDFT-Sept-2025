@@ -35,7 +35,10 @@ app.post("/recipes", async (req, res) => {
   console.log("request.body", req.body);
   //with async and await
   try {
-    const createdRecipe = await RecipeModel.create(req.body);
+    const createdRecipe = await RecipeModel.create({
+      ...req.body,
+      title: req.body.recipeTitle,
+    });
     res.status(201).json(createdRecipe);
   } catch (err) {
     console.log(err);

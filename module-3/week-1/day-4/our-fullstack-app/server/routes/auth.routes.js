@@ -6,6 +6,13 @@ const { isAuthenticated } = require("../middlewares/jwt.middleware");
 //signup route to create a new user
 router.post("/signup", async (req, res) => {
   try {
+    //regex to check password strength before creating
+    const regex = /^(?=.*[A-Z])(?=.*[^A-Za-z0-9]).{6}$/;
+
+    // if (!req.body.password.match(regex)) {
+    //   res.status(403).json({ errorMessage: "password not strong enough" });
+    // }
+
     // const { username, email, password} = req.body
     //first check if the email is already taken
     const foundUser = await UserModel.findOne({ email: req.body.email });
@@ -31,7 +38,7 @@ router.post("/signup", async (req, res) => {
     }
   } catch (error) {
     console.log(error);
-    res.status(500).json(error);
+    res.status(500).json({ errorMessage: error });
   }
 });
 
@@ -78,5 +85,18 @@ router.get("/verify", isAuthenticated, async (req, res) => {
     message: "your token is verified! Nice work",
     currentUser: req.payload,
   });
+});
+
+//the profile route that gives all data of the user
+router.get("/profile/:userId", async (req, res) => {
+  try {
+    const userDataInDB = await UserModel.findById(req.params.userId).select(
+      "username email _id"
+    );
+    res.status(200).json(userDataInDB);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json(error);
+  }
 });
 module.exports = router;

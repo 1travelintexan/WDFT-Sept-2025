@@ -1,0 +1,31 @@
+body {
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+label {
+  margin: 3px;
+}
+
+nav {
+  background-color: rgb(9, 82, 57);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+
+nav img {
+  height: 8vh;
+  border-radius: 4vh;
+}
+
+.error {
+  color: red;
+}

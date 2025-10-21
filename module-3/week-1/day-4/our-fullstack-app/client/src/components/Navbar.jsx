@@ -6,8 +6,13 @@ const Navbar = () => {
   const { handleLogout, isLoggedIn } = useContext(AuthContext);
   return (
     <nav>
-      <img src={ourLogo} alt="kuku" />
+      <Link to="/profile">
+        <img src={ourLogo} alt="kuku" />
+      </Link>
       <h2>Our Fullstack App</h2>
+      <Link to="/create-a-pizza">
+        <button>Create a Pizza</button>
+      </Link>
       {isLoggedIn ? (
         <button onClick={handleLogout}>Logout</button>
       ) : (

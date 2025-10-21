@@ -29,3 +29,13 @@ nav img {
 .error {
   color: red;
 }
+
+.pizza-card {
+  border: 2px solid white;
+  margin: 5px;
+}
+.pizza-card img {
+  height: 20vh;
+  width: 20vh;
+  object-fit: cover;
+}

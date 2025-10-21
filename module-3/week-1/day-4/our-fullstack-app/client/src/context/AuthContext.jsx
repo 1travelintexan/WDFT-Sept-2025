@@ -40,9 +40,7 @@ const AuthContentWrapper = ({ children }) => {
   }
   //useEffect to be called on every refresh of the page for the whole app
   useEffect(() => {
-    setTimeout(() => {
-      authenticateUser();
-    }, 2000);
+    authenticateUser();
   }, []);
 
   return (

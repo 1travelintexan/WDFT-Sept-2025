@@ -5,7 +5,11 @@ const pizzaSchema = new Schema({
     type: String,
     required: true,
   },
-  image: String,
+  image: {
+    type: String,
+    default:
+      "https://plus.unsplash.com/premium_photo-1733259709671-9dbf22bf02cc?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8ZGVmYXVsdCUyMHBpenphfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=500",
+  },
   directions: String,
   creator: {
     type: Schema.Types.ObjectId,

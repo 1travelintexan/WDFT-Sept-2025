@@ -3,6 +3,16 @@ body {
   padding: 0;
   margin: 0;
 }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  padding: 0;
+  margin: 0;
+}
 
 form {
   display: flex;
@@ -38,4 +48,14 @@ nav img {
   height: 20vh;
   width: 20vh;
   object-fit: cover;
+}
+footer {
+  background-color: rgb(58, 22, 91);
+  height: 20vh;
+  margin: 0;
+}
+main {
+  min-height: 70vh;
+  background-color: rgb(36, 73, 75);
+  margin: 0;
 }

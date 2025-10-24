@@ -5,22 +5,23 @@ import { useNavigate } from "react-router-dom";
 
 export const CreatePizzaPage = () => {
   const [title, setTitle] = useState("");
-  const [image, setImage] = useState("");
   const [directions, setDirections] = useState("");
   const { currentUser } = useContext(AuthContext);
   const nav = useNavigate();
   async function handleCreatePizza(e) {
     e.preventDefault();
     try {
-      const thePizzaToCreate = {
-        title,
-        image,
-        directions,
-        creator: currentUser._id,
-      };
+      //new version with cloudinary
+      const image = e.target.image.files[0];
+      const ourFormData = new FormData();
+      ourFormData.append("imageUrl", image);
+      ourFormData.append("title", title);
+      ourFormData.append("directions", directions);
+      ourFormData.append("creator", currentUser._id);
+
       const { data } = await axios.post(
         "http://localhost:5005/pizza/create-a-pizza",
-        thePizzaToCreate
+        ourFormData
       );
       console.log("pizza created! nice work :)", data);
       nav("/pizzas");
@@ -45,13 +46,7 @@ export const CreatePizzaPage = () => {
         </label>
         <label>
           Pizza Image:
-          <input
-            type="text"
-            value={image}
-            onChange={(e) => {
-              setImage(e.target.value);
-            }}
-          />
+          <input type="file" name="image" />
         </label>
         <label>
           Pizza Directions:

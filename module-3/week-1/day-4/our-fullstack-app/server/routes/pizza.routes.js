@@ -1,7 +1,7 @@
 const { isAuthenticated } = require("../middlewares/jwt.middleware");
 const PizzaModel = require("../models/Pizza.model");
 const router = require("express").Router();
-
+const uploader = require("../middlewares/cloudinary.config");
 router.get("/all-pizzas", async (req, res, next) => {
   try {
     const allPizzasInDB = await PizzaModel.find().populate(
@@ -35,16 +35,24 @@ router.get("/users-pizzas/:userId", async (req, res) => {
   }
 });
 //route to create a pizza
-router.post("/create-a-pizza", async (req, res) => {
-  try {
-    const createdPizza = await PizzaModel.create(req.body);
-    console.log("pizza created", createdPizza);
-    res.status(201).json(createdPizza);
-  } catch (error) {
-    console.log(error);
-    res.status(500).json(error);
+router.post(
+  "/create-a-pizza",
+  uploader.single("imageUrl"),
+  async (req, res) => {
+    try {
+      console.log("here is the file--->", req.file);
+      const createdPizza = await PizzaModel.create({
+        ...req.body,
+        image: req.file?.path,
+      });
+      console.log("pizza created", createdPizza);
+      res.status(201).json(createdPizza);
+    } catch (error) {
+      console.log(error);
+      res.status(500).json(error);
+    }
   }
-});
+);
 
 router.delete("/delete-a-pizza/:pizzaId", async (req, res) => {
   try {

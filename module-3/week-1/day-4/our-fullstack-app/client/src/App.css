@@ -59,3 +59,16 @@ main {
   background-color: rgb(36, 73, 75);
   margin: 0;
 }
+
+.map-page {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* map container default class */
+.leaflet-container {
+  height: 500px;
+  width: 600px;
+}

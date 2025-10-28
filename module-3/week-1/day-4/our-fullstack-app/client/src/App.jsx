@@ -8,6 +8,7 @@ import { AllPizzasPage } from "./pages/AllPizzasPage";
 import { OnePizzaPage } from "./pages/OnePizzaPage";
 import { CreatePizzaPage } from "./pages/CreatePizzaPage";
 import { OurOutlet } from "./components/OurOutlet";
+import MyMap from "./components/MyMap";
 function App() {
   return (
     <>
@@ -15,6 +16,14 @@ function App() {
         <Routes>
           <Route path="/" element={<SignupPage />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route
+            path="/map"
+            element={
+              <OurOutlet>
+                <MyMap />
+              </OurOutlet>
+            }
+          />
           <Route
             path="/pizzas"
             element={

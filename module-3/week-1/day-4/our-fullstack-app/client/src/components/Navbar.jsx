@@ -9,6 +9,9 @@ const Navbar = () => {
       <Link to="/profile">
         <img src={ourLogo} alt="kuku" />
       </Link>
+      <Link to="/map">
+        <button>See Map</button>
+      </Link>
       <h2>Our Fullstack App</h2>
       <Link to="/create-a-pizza">
         <button>Create a Pizza</button>
